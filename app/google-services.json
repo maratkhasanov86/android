@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1042603813763",
+    "project_id": "cardatadata",
+    "storage_bucket": "cardatadata.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1042603813763:android:e1330c48086d362e68e4b6",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3LDlzT5O8EZnapVHwlxiGW_YDtYNYKog"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1042603813763:android:f7a7db9925fc261068e4b6",
+        "android_client_info": {
+          "package_name": "com.example.myapplication1212"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3LDlzT5O8EZnapVHwlxiGW_YDtYNYKog"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
