@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
             User newUser = new User (id, login_text);
             mDataBase.push().setValue(newUser);
             Intent Intent = new Intent(MainActivity.this, MainActivity2.class);
-            startActivity(intent);
+            startActivity(Intent);
 
               }
     };
