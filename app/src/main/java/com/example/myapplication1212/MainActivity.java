@@ -1,6 +1,7 @@
 package com.example.myapplication1212;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -48,6 +49,9 @@ public class MainActivity extends AppCompatActivity {
 
             User newUser = new User (id, login_text);
             mDataBase.push().setValue(newUser);
+            Intent Intent = new Intent(MainActivity.this, MainActivity2.class);
+            startActivity(intent);
+
               }
     };
     enter = findViewById(R.id.button);
