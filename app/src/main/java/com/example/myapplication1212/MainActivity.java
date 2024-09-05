@@ -1,6 +1,4 @@
 package com.example.myapplication1212;
-
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -49,13 +47,28 @@ public class MainActivity extends AppCompatActivity {
 
             User newUser = new User (id, login_text);
             mDataBase.push().setValue(newUser);
-            Intent Intent = new Intent(MainActivity.this, MainActivity2.class);
-            startActivity(Intent);
+          //  Intent Intent = new Intent(MainActivity.this, ReadActivity.class);
+          //  startActivity(Intent);
 
               }
     };
+
+        View.OnClickListener btn2 = new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+
+                Intent Intent = new Intent(MainActivity.this, ReadActivity.class);
+                startActivity(Intent);
+
+            }
+        };
     enter = findViewById(R.id.button);
 
     enter.setOnClickListener(btn1);
-    }
+
+    Sign_in = findViewById(R.id.button2);
+    Sign_in.setOnClickListener(btn2);
+        }
 }

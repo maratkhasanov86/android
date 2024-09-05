@@ -21,9 +21,11 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.List;
 
 public class MainActivity2 extends AppCompatActivity {
+    private ListView listView;
+
     private DatabaseReference mDataBase;
     private List<String> DiscrTasks;
-    ListView ListUserTasks;
+    private ListView ListUserTasks;
     private String USER_KEY = "User";
 
 
@@ -40,7 +42,7 @@ public class MainActivity2 extends AppCompatActivity {
         });
         ListUserTasks = (ListView) findViewById(R.id.discr_for_tasks);
         mDataBase = FirebaseDatabase.getInstance().getReference(USER_KEY);
-        updateUI();
+        ///updateUI();
         mDataBase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
