@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.common.api.Response;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -16,6 +17,10 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+
 
 public class ReadActivity extends AppCompatActivity
 {
@@ -44,6 +49,7 @@ public class ReadActivity extends AppCompatActivity
 
 
 
+
     }
 
     private void getDataFromDB()
@@ -51,14 +57,12 @@ public class ReadActivity extends AppCompatActivity
         ValueEventListener vListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                int i = 0;
+
                 if (listData.size()>0) listData.clear();
                 for (DataSnapshot ds: snapshot.getChildren()){
                     User user = ds.getValue(User.class);
                     listData.add(user.name);
-                    i++;
-                    if (i==2)
-                        break;
+
                 }
                 int y = 1;
                 adapter.notifyDataSetChanged();

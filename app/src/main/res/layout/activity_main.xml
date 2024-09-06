@@ -36,7 +36,7 @@
         android:layout_marginTop="64dp"
         android:ems="10"
         android:inputType="text"
-        android:text="Login"
+        android:text="Введите адрес пробки"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -48,7 +48,7 @@
         android:layout_marginTop="132dp"
         android:ems="10"
         android:inputType="text"
-        android:text="Password"
+        android:text="Здесь будет курс"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

@@ -14,6 +14,19 @@ import androidx.core.view.WindowInsetsCompat;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import java.io.IOException;
+import java.util.concurrent.TimeUnit;
+
+import okhttp3.CacheControl;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.HttpUrl;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+
 public class MainActivity extends AppCompatActivity {
     Button enter;
     Button Sign_in;
@@ -35,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
         login = findViewById(R.id.idlogin);
         password = findViewById(R.id.idsign_in);
         mDataBase = FirebaseDatabase.getInstance().getReference(USER_KEY);
+        r();
 
     View.OnClickListener btn1 = new View.OnClickListener()
     {
@@ -53,6 +67,8 @@ public class MainActivity extends AppCompatActivity {
               }
     };
 
+
+
         View.OnClickListener btn2 = new View.OnClickListener()
         {
             @Override
@@ -64,6 +80,11 @@ public class MainActivity extends AppCompatActivity {
 
             }
         };
+
+
+
+
+
     enter = findViewById(R.id.button);
 
     enter.setOnClickListener(btn1);
@@ -71,4 +92,54 @@ public class MainActivity extends AppCompatActivity {
     Sign_in = findViewById(R.id.button2);
     Sign_in.setOnClickListener(btn2);
         }
+    private void r()
+    {
+        EditText edit_kurs;
+        edit_kurs = findViewById(R.id.idsign_in);
+
+
+        // создаем singleton объект клиента
+        OkHttpClient client = new OkHttpClient();
+        HttpUrl.Builder urlBuilder = HttpUrl.parse("https://www.cbr-xml-daily.ru/daily_eng_utf8.xml").newBuilder();
+
+        String url = urlBuilder.build().toString();
+
+        Request request = new Request.Builder()
+                .url(url)
+                .cacheControl(new CacheControl.Builder().maxStale(30, TimeUnit.DAYS).build())
+                .build();
+        // выполняем запрос
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onResponse(Call call, final Response response) throws IOException {
+                if (!response.isSuccessful()) {
+                    throw new IOException("Unexpected code " + response);
+                } else {
+                    // читаем данные в отдельном потоке
+                    final String responseData = response.body().string();
+
+                    // выполняем операции по обновлению UI
+                    MainActivity.this.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            int index_1 = responseData.indexOf("<Value>");
+                            int index_2 = responseData.indexOf("</Value>");
+                            String s = "Курс австр.доллара " + responseData.substring(index_1+7,index_2);
+
+                            edit_kurs.setText(s);
+                        }
+                    });
+                }
+            }
+
+            @Override
+            public void onFailure(Call call, IOException e) {
+                e.printStackTrace();
+            }
+        });
+    }
+
 }
+
+
+

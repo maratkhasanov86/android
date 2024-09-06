@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">My Application1212</string>
-    <string name="button_1_beg_caption">Enter</string>
-    <string name="button_2_beg_caption">Sign in</string>
+    <string name="button_1_beg_caption">Ввод пробки</string>
+    <string name="button_2_beg_caption">Все пробки</string>
 </resources>
